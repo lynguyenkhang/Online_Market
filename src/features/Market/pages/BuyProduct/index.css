@@ -1,0 +1,16 @@
+.BuyProduct {
+    /* padding: 0px 40px; */
+}
+
+    .BuyProduct__title {
+        font-size: 24px;
+        padding: 10px 0px;
+        margin: 0px auto;
+        text-align: center;
+        font-weight: 700;
+        line-height: 40px;
+        /* border-bottom: 3px solid rgb(2 87 148); */
+        border-bottom: 3px solid #035597;
+    }
+
+

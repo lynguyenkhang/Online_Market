@@ -1,13 +1,44 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  margin: 0px;
+  font-family:  Roboto, Helvetica, Arial ,sans-serif !important;
+  background-color: #eee;
+  /* padding: 0px 35px; */
+  font-size: 16px;
+  overflow-x: scroll;
+  /* -webkit-overflow-scrolling: touch; */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  -webkit-tap-highlight-color: transparent !important;
 }
+
+::-webkit-scrollbar {
+  display: none;
+  width: 0;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0);
+}
+
+/* 
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+input,
+select:focus,
+textarea {
+  font-size: 14px !important;
+} */
