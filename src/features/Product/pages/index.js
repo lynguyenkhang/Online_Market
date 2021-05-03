@@ -12,7 +12,7 @@ import BotNavigation from '../../../components/Navigation/BotNavigation'
 import TopNavigation from '../../../components/Navigation/TopNavigation'
 import ProductImages from '../../../components/pages/Home/ProductImages'
 import { addDotsToPrice } from '../../../tools/adjustPrice'
-import changeDateFormat from '../../../tools/changeDateFormat'
+import {changeDateFormat2, changeDateFormat} from '../../../tools/changeDateFormat'
 import DateDiffFunction from '../../../tools/dateDiff'
 import { loadProduct, cleanUp } from '../ProductSlice'
 
@@ -122,7 +122,14 @@ export default function MainPage() {
         const dotPrice = addDotsToPrice(`${product.price}`) + " đ"
 
         const date = new Date(product.time)
-        const dateString = changeDateFormat(date.toLocaleDateString())
+        
+        let dateString = date.toLocaleDateString();
+        if(dateString.indexOf('-') > -1){
+            dateString = changeDateFormat2(date.toLocaleDateString())
+        } else {
+            dateString = changeDateFormat(date.toLocaleDateString())
+        }
+
         const dateDiff = DateDiffFunction(date, new Date()) + " trước"
 
         const { street, ward, district, city } = product.address

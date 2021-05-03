@@ -12,7 +12,9 @@ import BotNavigation from '../../../components/Navigation/BotNavigation'
 import TopNavigation from '../../../components/Navigation/TopNavigation'
 import ProductImages from '../../../components/pages/Home/ProductImages'
 import { addDotsToPrice } from '../../../tools/adjustPrice'
-import changeDateFormat from '../../../tools/changeDateFormat'
+import {changeDateFormat, changeDateFormat2} from '../../../tools/changeDateFormat'
+
+
 import DateDiffFunction from '../../../tools/dateDiff'
 import { loadProduct, cleanUp, changeProductStatus } from '../AdminSlice'
 import { Alert } from '@material-ui/lab';
@@ -150,7 +152,14 @@ export default function AdminProduct() {
         const dotPrice = addDotsToPrice(`${product.price}`) + " đ"
 
         const date = new Date(product.time)
-        const dateString = changeDateFormat(date.toLocaleDateString())
+
+        let dateString = date.toLocaleDateString();
+        if(dateString.indexOf('-') > -1){
+            dateString = changeDateFormat2(date.toLocaleDateString())
+        } else {
+            dateString = changeDateFormat(date.toLocaleDateString())
+        }
+
         const dateDiff = DateDiffFunction(date, new Date()) + " trước"
 
         const { street, ward, district, city } = product.address
@@ -330,12 +339,10 @@ export default function AdminProduct() {
                     </Grid>
 
                 </Layout>
-                <BotNavigation page={0} />
+                <BotNavigation page={3} adminCondition={email === process.env.REACT_APP_ADMIN}/>
 
 
             </div>
         )
     } else return (<div></div>)
-
-
 }

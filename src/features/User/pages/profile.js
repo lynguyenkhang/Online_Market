@@ -8,7 +8,7 @@ import InforUserBox from '../../../components/pages/Profile/InforUserBox'
 import LikesBox from '../../../components/pages/Profile/LikesBox'
 import PostsBox from '../../../components/pages/Profile/PostsBox'
 import UncheckedPostsBox from '../../../components/pages/Profile/UncheckedPostsBox'
-import changeDateFormat from '../../../tools/changeDateFormat'
+import {changeDateFormat} from '../../../tools/changeDateFormat'
 import { loadPosts, loadUncheckedPosts } from '../UserSlice'
 
 

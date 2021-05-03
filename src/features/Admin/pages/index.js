@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../../../components/Layout';
 import BotNavigation from '../../../components/Navigation/BotNavigation';
 import { loadAllUncheckedProducts } from '../AdminSlice';
-import changeDateFormat from '../../../tools/changeDateFormat';
+import {changeDateFormat, changeDateFormat2} from '../../../tools/changeDateFormat';
 import Table from '../../../components/pages/Admin/Table'
 import { Button, ButtonGroup, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
@@ -44,14 +44,19 @@ export default function AdminPage() {
         const data = arr.map(({id, title, author, time, price}) => {
             const authorName = author.name
 
-            let date = new Date(time)
-            date = changeDateFormat(date.toLocaleDateString())
+            let date = new Date(time)            
+            let dateString = date.toLocaleDateString();
+            if(dateString.indexOf('-') > -1){
+                dateString = changeDateFormat2(date.toLocaleDateString())
+            } else {
+                dateString = changeDateFormat(date.toLocaleDateString())
+            }
 
             return {
                 id,
                 "name": title,
                 "author": authorName,
-                "date": date,
+                "date": dateString,
             }
         })
         return data
@@ -105,7 +110,7 @@ export default function AdminPage() {
 
             </Layout>
 
-            <BotNavigation page={0} />
+            <BotNavigation page={3} adminCondition={email === process.env.REACT_APP_ADMIN}/>
 
         </div>
     )

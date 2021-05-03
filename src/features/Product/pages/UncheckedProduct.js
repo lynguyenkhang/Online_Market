@@ -11,7 +11,7 @@ import BotNavigation from '../../../components/Navigation/BotNavigation'
 import TopNavigation from '../../../components/Navigation/TopNavigation'
 import ProductImages from '../../../components/pages/Home/ProductImages'
 import { addDotsToPrice } from '../../../tools/adjustPrice'
-import changeDateFormat from '../../../tools/changeDateFormat'
+import {changeDateFormat, changeDateFormat2} from '../../../tools/changeDateFormat'
 import DateDiffFunction from '../../../tools/dateDiff'
 import { cleanUp, loadUncheckedProduct } from '../ProductSlice'
 
@@ -122,7 +122,14 @@ export default function UncheckedProductPage() {
         const dotPrice = addDotsToPrice(`${product.price}`) + " đ"
 
         const date = new Date(product.time)
-        const dateString = changeDateFormat(date.toLocaleDateString())
+
+        let dateString = date.toLocaleDateString();
+        if(dateString.indexOf('-') > -1){
+            dateString = changeDateFormat2(date.toLocaleDateString())
+        } else {
+            dateString = changeDateFormat(date.toLocaleDateString())
+        }
+
         const dateDiff = DateDiffFunction(date, new Date()) + " trước"
 
         const { street, ward, district, city } = product.address
@@ -254,7 +261,7 @@ export default function UncheckedProductPage() {
 
                     </Grid>
                 </Layout>
-                <BotNavigation page={0} />
+                <BotNavigation page={0} adminCondition={email === process.env.REACT_APP_ADMIN}/>
 
 
             </div>

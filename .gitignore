@@ -22,3 +22,13 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+# file firebase hosting
+.eslintcache
+.firebaserc
+.firebase/
+firebase.json
+
+
+
